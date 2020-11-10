@@ -35,7 +35,7 @@ import struct
 
 from micropython import const
 from adafruit_bus_device.i2c_device import I2CDevice
-from adafruit_register.i2c_struct import Struct, UnaryStruct
+# from adafruit_register.i2c_struct import Struct, UnaryStruct
 
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_BNO055.git"
@@ -43,77 +43,77 @@ __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_BNO055.git"
 _CHIP_ID = const(0xA0)
 
 CONFIG_MODE = const(0x00)
-ACCONLY_MODE = const(0x01)
-MAGONLY_MODE = const(0x02)
-GYRONLY_MODE = const(0x03)
-ACCMAG_MODE = const(0x04)
-ACCGYRO_MODE = const(0x05)
-MAGGYRO_MODE = const(0x06)
-AMG_MODE = const(0x07)
-IMUPLUS_MODE = const(0x08)
-COMPASS_MODE = const(0x09)
-M4G_MODE = const(0x0A)
-NDOF_FMC_OFF_MODE = const(0x0B)
+# ACCONLY_MODE = const(0x01)
+# MAGONLY_MODE = const(0x02)
+# GYRONLY_MODE = const(0x03)
+# ACCMAG_MODE = const(0x04)
+# ACCGYRO_MODE = const(0x05)
+# MAGGYRO_MODE = const(0x06)
+# AMG_MODE = const(0x07)
+# IMUPLUS_MODE = const(0x08)
+# COMPASS_MODE = const(0x09)
+# M4G_MODE = const(0x0A)
+# NDOF_FMC_OFF_MODE = const(0x0B)
 NDOF_MODE = const(0x0C)
 
-ACCEL_2G = const(0x00)  # For accel_range property
+# ACCEL_2G = const(0x00)  # For accel_range property
 ACCEL_4G = const(0x01)  # Default
-ACCEL_8G = const(0x02)
-ACCEL_16G = const(0x03)
-ACCEL_7_81HZ = const(0x00)  # For accel_bandwidth property
-ACCEL_15_63HZ = const(0x04)
-ACCEL_31_25HZ = const(0x08)
+# ACCEL_8G = const(0x02)
+# ACCEL_16G = const(0x03)
+# ACCEL_7_81HZ = const(0x00)  # For accel_bandwidth property
+# ACCEL_15_63HZ = const(0x04)
+# ACCEL_31_25HZ = const(0x08)
 ACCEL_62_5HZ = const(0x0C)  # Default
-ACCEL_125HZ = const(0x10)
-ACCEL_250HZ = const(0x14)
-ACCEL_500HZ = const(0x18)
-ACCEL_1000HZ = const(0x1C)
+# ACCEL_125HZ = const(0x10)
+# ACCEL_250HZ = const(0x14)
+# ACCEL_500HZ = const(0x18)
+# ACCEL_1000HZ = const(0x1C)
 ACCEL_NORMAL_MODE = const(0x00)  # Default. For accel_mode property
-ACCEL_SUSPEND_MODE = const(0x20)
-ACCEL_LOWPOWER1_MODE = const(0x40)
-ACCEL_STANDBY_MODE = const(0x60)
-ACCEL_LOWPOWER2_MODE = const(0x80)
-ACCEL_DEEPSUSPEND_MODE = const(0xA0)
+# ACCEL_SUSPEND_MODE = const(0x20)
+# ACCEL_LOWPOWER1_MODE = const(0x40)
+# ACCEL_STANDBY_MODE = const(0x60)
+# ACCEL_LOWPOWER2_MODE = const(0x80)
+# ACCEL_DEEPSUSPEND_MODE = const(0xA0)
 
 GYRO_2000_DPS = const(0x00)  # Default. For gyro_range property
-GYRO_1000_DPS = const(0x01)
-GYRO_500_DPS = const(0x02)
-GYRO_250_DPS = const(0x03)
-GYRO_125_DPS = const(0x04)
-GYRO_523HZ = const(0x00)  # For gyro_bandwidth property
-GYRO_230HZ = const(0x08)
-GYRO_116HZ = const(0x10)
-GYRO_47HZ = const(0x18)
-GYRO_23HZ = const(0x20)
-GYRO_12HZ = const(0x28)
-GYRO_64HZ = const(0x30)
+# GYRO_1000_DPS = const(0x01)
+# GYRO_500_DPS = const(0x02)
+# GYRO_250_DPS = const(0x03)
+# GYRO_125_DPS = const(0x04)
+# GYRO_523HZ = const(0x00)  # For gyro_bandwidth property
+# GYRO_230HZ = const(0x08)
+# GYRO_116HZ = const(0x10)
+# GYRO_47HZ = const(0x18)
+# GYRO_23HZ = const(0x20)
+# GYRO_12HZ = const(0x28)
+# GYRO_64HZ = const(0x30)
 GYRO_32HZ = const(0x38)  # Default
 GYRO_NORMAL_MODE = const(0x00)  # Default. For gyro_mode property
-GYRO_FASTPOWERUP_MODE = const(0x01)
-GYRO_DEEPSUSPEND_MODE = const(0x02)
-GYRO_SUSPEND_MODE = const(0x03)
-GYRO_ADVANCEDPOWERSAVE_MODE = const(0x04)
+# GYRO_FASTPOWERUP_MODE = const(0x01)
+# GYRO_DEEPSUSPEND_MODE = const(0x02)
+# GYRO_SUSPEND_MODE = const(0x03)
+# GYRO_ADVANCEDPOWERSAVE_MODE = const(0x04)
 
-MAGNET_2HZ = const(0x00)  # For magnet_rate property
-MAGNET_6HZ = const(0x01)
-MAGNET_8HZ = const(0x02)
-MAGNET_10HZ = const(0x03)
-MAGNET_15HZ = const(0x04)
+# MAGNET_2HZ = const(0x00)  # For magnet_rate property
+# MAGNET_6HZ = const(0x01)
+# MAGNET_8HZ = const(0x02)
+# MAGNET_10HZ = const(0x03)
+# MAGNET_15HZ = const(0x04)
 MAGNET_20HZ = const(0x05)  # Default
-MAGNET_25HZ = const(0x06)
-MAGNET_30HZ = const(0x07)
-MAGNET_LOWPOWER_MODE = const(0x00)  # For magnet_operation_mode property
+# MAGNET_25HZ = const(0x06)
+# MAGNET_30HZ = const(0x07)
+# MAGNET_LOWPOWER_MODE = const(0x00)  # For magnet_operation_mode property
 MAGNET_REGULAR_MODE = const(0x08)  # Default
-MAGNET_ENHANCEDREGULAR_MODE = const(0x10)
-MAGNET_ACCURACY_MODE = const(0x18)
-MAGNET_NORMAL_MODE = const(0x00)  # for magnet_power_mode property
-MAGNET_SLEEP_MODE = const(0x20)
-MAGNET_SUSPEND_MODE = const(0x40)
+# MAGNET_ENHANCEDREGULAR_MODE = const(0x10)
+# MAGNET_ACCURACY_MODE = const(0x18)
+# MAGNET_NORMAL_MODE = const(0x00)  # for magnet_power_mode property
+# MAGNET_SLEEP_MODE = const(0x20)
+# MAGNET_SUSPEND_MODE = const(0x40)
 MAGNET_FORCEMODE_MODE = const(0x60)  # Default
 
 _POWER_NORMAL = const(0x00)
-_POWER_LOW = const(0x01)
-_POWER_SUSPEND = const(0x02)
+#_POWER_LOW = const(0x01)
+#_POWER_SUSPEND = const(0x02)
 
 _MODE_REGISTER = const(0x3D)
 _PAGE_REGISTER = const(0x07)
@@ -132,44 +132,44 @@ _POWER_REGISTER = const(0x3E)
 _ID_REGISTER = const(0x00)
 
 
-class _ScaledReadOnlyStruct(Struct):  # pylint: disable=too-few-public-methods
-    def __init__(self, register_address, struct_format, scale):
-        super().__init__(register_address, struct_format)
-        self.scale = scale
+# class _ScaledReadOnlyStruct(Struct):  # pylint: disable=too-few-public-methods
+#     def __init__(self, register_address, struct_format, scale):
+#         super().__init__(register_address, struct_format)
+#         self.scale = scale
 
-    def __get__(self, obj, objtype=None):
-        result = super().__get__(obj, objtype)
-        return tuple(self.scale * v for v in result)
+#     def __get__(self, obj, objtype=None):
+#         result = super().__get__(obj, objtype)
+#         return tuple(self.scale * v for v in result)
 
-    def __set__(self, obj, value):
-        raise NotImplementedError()
-
-
-class _ReadOnlyUnaryStruct(UnaryStruct):  # pylint: disable=too-few-public-methods
-    def __set__(self, obj, value):
-        raise NotImplementedError()
+#     def __set__(self, obj, value):
+#         raise NotImplementedError()
 
 
-class _ModeStruct(Struct):  # pylint: disable=too-few-public-methods
-    def __init__(self, register_address, struct_format, mode):
-        super().__init__(register_address, struct_format)
-        self.mode = mode
+# class _ReadOnlyUnaryStruct(UnaryStruct):  # pylint: disable=too-few-public-methods
+#     def __set__(self, obj, value):
+#         raise NotImplementedError()
 
-    def __get__(self, obj, objtype=None):
-        last_mode = obj.mode
-        obj.mode = self.mode
-        result = super().__get__(obj, objtype)
-        obj.mode = last_mode
-        # single value comes back as a one-element tuple
-        return result[0] if isinstance(result, tuple) and len(result) == 1 else result
 
-    def __set__(self, obj, value):
-        last_mode = obj.mode
-        obj.mode = self.mode
-        # underlying __set__() expects a tuple
-        set_val = value if isinstance(value, tuple) else (value,)
-        super().__set__(obj, set_val)
-        obj.mode = last_mode
+# class _ModeStruct(Struct):  # pylint: disable=too-few-public-methods
+#     def __init__(self, register_address, struct_format, mode):
+#         super().__init__(register_address, struct_format)
+#         self.mode = mode
+
+#     def __get__(self, obj, objtype=None):
+#         last_mode = obj.mode
+#         obj.mode = self.mode
+#         result = super().__get__(obj, objtype)
+#         obj.mode = last_mode
+#         # single value comes back as a one-element tuple
+#         return result[0] if isinstance(result, tuple) and len(result) == 1 else result
+
+#     def __set__(self, obj, value):
+#         last_mode = obj.mode
+#         obj.mode = self.mode
+#         # underlying __set__() expects a tuple
+#         set_val = value if isinstance(value, tuple) else (value,)
+#         super().__set__(obj, set_val)
+#         obj.mode = last_mode
 
 
 class BNO055:  # pylint: disable=too-many-public-methods
@@ -644,31 +644,69 @@ class BNO055_I2C(BNO055):
     Driver for the BNO055 9DOF IMU sensor via I2C.
     """
 
-    _temperature = _ReadOnlyUnaryStruct(0x34, "b")
-    _acceleration = _ScaledReadOnlyStruct(0x08, "<hhh", 1 / 100)
-    _magnetic = _ScaledReadOnlyStruct(0x0E, "<hhh", 1 / 16)
-    _gyro = _ScaledReadOnlyStruct(0x14, "<hhh", 0.001090830782496456)
-    _euler = _ScaledReadOnlyStruct(0x1A, "<hhh", 1 / 16)
-    _quaternion = _ScaledReadOnlyStruct(0x20, "<hhhh", 1 / (1 << 14))
-    _linear_acceleration = _ScaledReadOnlyStruct(0x28, "<hhh", 1 / 100)
-    _gravity = _ScaledReadOnlyStruct(0x2E, "<hhh", 1 / 100)
+    # offsets_accelerometer = _ModeStruct(_OFFSET_ACCEL_REGISTER, "<hhh", CONFIG_MODE)
+    # """Calibration offsets for the accelerometer"""
+    # offsets_magnetometer = _ModeStruct(_OFFSET_MAGNET_REGISTER, "<hhh", CONFIG_MODE)
+    # """Calibration offsets for the magnetometer"""
+    # offsets_gyroscope = _ModeStruct(_OFFSET_GYRO_REGISTER, "<hhh", CONFIG_MODE)
+    # """Calibration offsets for the gyroscope"""
 
-    offsets_accelerometer = _ModeStruct(_OFFSET_ACCEL_REGISTER, "<hhh", CONFIG_MODE)
-    """Calibration offsets for the accelerometer"""
-    offsets_magnetometer = _ModeStruct(_OFFSET_MAGNET_REGISTER, "<hhh", CONFIG_MODE)
-    """Calibration offsets for the magnetometer"""
-    offsets_gyroscope = _ModeStruct(_OFFSET_GYRO_REGISTER, "<hhh", CONFIG_MODE)
-    """Calibration offsets for the gyroscope"""
-
-    radius_accelerometer = _ModeStruct(_RADIUS_ACCEL_REGISTER, "<h", CONFIG_MODE)
-    """Radius for accelerometer (cm?)"""
-    radius_magnetometer = _ModeStruct(_RADIUS_MAGNET_REGISTER, "<h", CONFIG_MODE)
-    """Radius for magnetometer (cm?)"""
+    # radius_accelerometer = _ModeStruct(_RADIUS_ACCEL_REGISTER, "<h", CONFIG_MODE)
+    # """Radius for accelerometer (cm?)"""
+    # radius_magnetometer = _ModeStruct(_RADIUS_MAGNET_REGISTER, "<h", CONFIG_MODE)
+    # """Radius for magnetometer (cm?)"""
 
     def __init__(self, i2c, address=0x28):
         self.buffer = bytearray(2)
         self.i2c_device = I2CDevice(i2c, address)
         super().__init__()
+
+    @property
+    def _temperature(self):
+        # _temperature = _ReadOnlyUnaryStruct(0x34, "b")
+        return struct.unpack("b", self._read_register_n(0x34))[0]
+
+    @property
+    def _acceleration(self):
+        # _acceleration = _ScaledReadOnlyStruct(0x08, "<hhh", 1 / 100)
+        result = struct.unpack("<hhh", self._read_register_n(0x08, 6))
+        return tuple(1/100 * v for v in result)
+
+    @property
+    def _magnetic(self):
+        # _magnetic = _ScaledReadOnlyStruct(0x0E, "<hhh", 1 / 16)
+        result = struct.unpack("<hhh", self._read_register_n(0x0E, 6))
+        return tuple(1/16 * v for v in result)
+
+    @property
+    def _gyro(self):
+        # _gyro = _ScaledReadOnlyStruct(0x14, "<hhh", 0.001090830782496456)
+        result = struct.unpack("<hhh", self._read_register_n(0x14, 6))
+        return tuple(0.001090830782496456 * v for v in result)
+
+    @property
+    def _euler(self):
+        # _euler = _ScaledReadOnlyStruct(0x1A, "<hhh", 1 / 16)
+        result = struct.unpack("<hhh", self._read_register_n(0x1A, 6))
+        return tuple(1/16 * v for v in result)
+
+    @property
+    def _quaternion(self):
+        # _quaternion = _ScaledReadOnlyStruct(0x20, "<hhhh", 1 / (1 << 14))
+        result = struct.unpack("<hhh", self._read_register_n(0x20, 6))
+        return tuple(1 / (1 << 14) * v for v in result)
+
+    @property
+    def _linear_acceleration(self):
+        # _linear_acceleration = _ScaledReadOnlyStruct(0x28, "<hhh", 1 / 100)
+        result = struct.unpack("<hhh", self._read_register_n(0x28, 6))
+        return tuple(1 / 100 * v for v in result)
+
+    @property
+    def _gravity(self):
+        # _gravity = _ScaledReadOnlyStruct(0x2E, "<hhh", 1 / 100)
+        result = struct.unpack("<hhh", self._read_register_n(0x2E, 6))
+        return tuple(1 / 100 * v for v in result)
 
     def _write_register(self, register, value):
         self.buffer[0] = register
@@ -676,145 +714,152 @@ class BNO055_I2C(BNO055):
         with self.i2c_device as i2c:
             i2c.write(self.buffer)
 
-    def _read_register(self, register):
+    def _read_register(self, register, length=1):
+            self.buffer[0] = register
+            with self.i2c_device as i2c:
+                i2c.write_then_readinto(self.buffer, self.buffer, out_end=1, in_start=1)
+            return self.buffer[1]
+
+    def _read_register_n(self, register, length=1):
         self.buffer[0] = register
+        buffer = bytearray(length)
         with self.i2c_device as i2c:
-            i2c.write_then_readinto(self.buffer, self.buffer, out_end=1, in_start=1)
-        return self.buffer[1]
+            i2c.write_then_readinto(self.buffer, buffer, out_end=1)
+        return buffer
 
 
-class BNO055_UART(BNO055):
-    """
-    Driver for the BNO055 9DOF IMU sensor via UART.
-    """
+# class BNO055_UART(BNO055):
+#     """
+#     Driver for the BNO055 9DOF IMU sensor via UART.
+#     """
 
-    def __init__(self, uart):
-        self._uart = uart
-        self._uart.baudrate = 115200
-        super().__init__()
+#     def __init__(self, uart):
+#         self._uart = uart
+#         self._uart.baudrate = 115200
+#         super().__init__()
 
-    def _write_register(self, register, data):  # pylint: disable=arguments-differ
-        if not isinstance(data, bytes):
-            data = bytes([data])
-        self._uart.write(bytes([0xAA, 0x00, register, len(data)]) + data)
-        now = time.monotonic()
-        while self._uart.in_waiting < 2 and time.monotonic() - now < 0.25:
-            pass
-        resp = self._uart.read(self._uart.in_waiting)
-        if len(resp) < 2:
-            raise OSError("UART access error.")
-        if resp[0] != 0xEE or resp[1] != 0x01:
-            raise RuntimeError("UART write error: {}".format(resp[1]))
+#     def _write_register(self, register, data):  # pylint: disable=arguments-differ
+#         if not isinstance(data, bytes):
+#             data = bytes([data])
+#         self._uart.write(bytes([0xAA, 0x00, register, len(data)]) + data)
+#         now = time.monotonic()
+#         while self._uart.in_waiting < 2 and time.monotonic() - now < 0.25:
+#             pass
+#         resp = self._uart.read(self._uart.in_waiting)
+#         if len(resp) < 2:
+#             raise OSError("UART access error.")
+#         if resp[0] != 0xEE or resp[1] != 0x01:
+#             raise RuntimeError("UART write error: {}".format(resp[1]))
 
-    def _read_register(self, register, length=1):  # pylint: disable=arguments-differ
-        i = 0
-        while i < 3:
-            self._uart.write(bytes([0xAA, 0x01, register, length]))
-            now = time.monotonic()
-            while self._uart.in_waiting < length + 2 and time.monotonic() - now < 0.1:
-                pass
-            resp = self._uart.read(self._uart.in_waiting)
-            if len(resp) >= 2 and resp[0] == 0xBB:
-                break
-            i += 1
-        if len(resp) < 2:
-            raise OSError("UART access error.")
-        if resp[0] != 0xBB:
-            raise RuntimeError("UART read error: {}".format(resp[1]))
-        if length > 1:
-            return resp[2:]
-        return int(resp[2])
+#     def _read_register(self, register, length=1):  # pylint: disable=arguments-differ
+#         i = 0
+#         while i < 3:
+#             self._uart.write(bytes([0xAA, 0x01, register, length]))
+#             now = time.monotonic()
+#             while self._uart.in_waiting < length + 2 and time.monotonic() - now < 0.1:
+#                 pass
+#             resp = self._uart.read(self._uart.in_waiting)
+#             if len(resp) >= 2 and resp[0] == 0xBB:
+#                 break
+#             i += 1
+#         if len(resp) < 2:
+#             raise OSError("UART access error.")
+#         if resp[0] != 0xBB:
+#             raise RuntimeError("UART read error: {}".format(resp[1]))
+#         if length > 1:
+#             return resp[2:]
+#         return int(resp[2])
 
-    @property
-    def _temperature(self):
-        return self._read_register(0x34)
+#     @property
+#     def _temperature(self):
+#         return self._read_register(0x34)
 
-    @property
-    def _acceleration(self):
-        resp = struct.unpack("<hhh", self._read_register(0x08, 6))
-        return tuple([x / 100 for x in resp])
+#     @property
+#     def _acceleration(self):
+#         resp = struct.unpack("<hhh", self._read_register(0x08, 6))
+#         return tuple([x / 100 for x in resp])
 
-    @property
-    def _magnetic(self):
-        resp = struct.unpack("<hhh", self._read_register(0x0E, 6))
-        return tuple([x / 16 for x in resp])
+#     @property
+#     def _magnetic(self):
+#         resp = struct.unpack("<hhh", self._read_register(0x0E, 6))
+#         return tuple([x / 16 for x in resp])
 
-    @property
-    def _gyro(self):
-        resp = struct.unpack("<hhh", self._read_register(0x14, 6))
-        return tuple([x * 0.001090830782496456 for x in resp])
+#     @property
+#     def _gyro(self):
+#         resp = struct.unpack("<hhh", self._read_register(0x14, 6))
+#         return tuple([x * 0.001090830782496456 for x in resp])
 
-    @property
-    def _euler(self):
-        resp = struct.unpack("<hhh", self._read_register(0x1A, 6))
-        return tuple([x / 16 for x in resp])
+#     @property
+#     def _euler(self):
+#         resp = struct.unpack("<hhh", self._read_register(0x1A, 6))
+#         return tuple([x / 16 for x in resp])
 
-    @property
-    def _quaternion(self):
-        resp = struct.unpack("<hhhh", self._read_register(0x20, 8))
-        return tuple([x / (1 << 14) for x in resp])
+#     @property
+#     def _quaternion(self):
+#         resp = struct.unpack("<hhhh", self._read_register(0x20, 8))
+#         return tuple([x / (1 << 14) for x in resp])
 
-    @property
-    def _linear_acceleration(self):
-        resp = struct.unpack("<hhh", self._read_register(0x28, 6))
-        return tuple([x / 100 for x in resp])
+#     @property
+#     def _linear_acceleration(self):
+#         resp = struct.unpack("<hhh", self._read_register(0x28, 6))
+#         return tuple([x / 100 for x in resp])
 
-    @property
-    def _gravity(self):
-        resp = struct.unpack("<hhh", self._read_register(0x2E, 6))
-        return tuple([x / 100 for x in resp])
+#     @property
+#     def _gravity(self):
+#         resp = struct.unpack("<hhh", self._read_register(0x2E, 6))
+#         return tuple([x / 100 for x in resp])
 
-    @property
-    def offsets_accelerometer(self):
-        """Calibration offsets for the accelerometer"""
-        return struct.unpack("<hhh", self._read_register(_OFFSET_ACCEL_REGISTER, 6))
+#     @property
+#     def offsets_accelerometer(self):
+#         """Calibration offsets for the accelerometer"""
+#         return struct.unpack("<hhh", self._read_register(_OFFSET_ACCEL_REGISTER, 6))
 
-    @offsets_accelerometer.setter
-    def offsets_accelerometer(self, offsets):
-        data = bytearray(6)
-        struct.pack_into("<hhh", data, 0, *offsets)
-        self._write_register(_OFFSET_ACCEL_REGISTER, bytes(data))
+#     @offsets_accelerometer.setter
+#     def offsets_accelerometer(self, offsets):
+#         data = bytearray(6)
+#         struct.pack_into("<hhh", data, 0, *offsets)
+#         self._write_register(_OFFSET_ACCEL_REGISTER, bytes(data))
 
-    @property
-    def offsets_magnetometer(self):
-        """Calibration offsets for the magnetometer"""
-        return struct.unpack("<hhh", self._read_register(_OFFSET_MAGNET_REGISTER, 6))
+#     @property
+#     def offsets_magnetometer(self):
+#         """Calibration offsets for the magnetometer"""
+#         return struct.unpack("<hhh", self._read_register(_OFFSET_MAGNET_REGISTER, 6))
 
-    @offsets_magnetometer.setter
-    def offsets_magnetometer(self, offsets):
-        data = bytearray(6)
-        struct.pack_into("<hhh", data, 0, *offsets)
-        self._write_register(_OFFSET_MAGNET_REGISTER, bytes(data))
+#     @offsets_magnetometer.setter
+#     def offsets_magnetometer(self, offsets):
+#         data = bytearray(6)
+#         struct.pack_into("<hhh", data, 0, *offsets)
+#         self._write_register(_OFFSET_MAGNET_REGISTER, bytes(data))
 
-    @property
-    def offsets_gyroscope(self):
-        """Calibration offsets for the gyroscope"""
-        return struct.unpack("<hhh", self._read_register(_OFFSET_GYRO_REGISTER, 6))
+#     @property
+#     def offsets_gyroscope(self):
+#         """Calibration offsets for the gyroscope"""
+#         return struct.unpack("<hhh", self._read_register(_OFFSET_GYRO_REGISTER, 6))
 
-    @offsets_gyroscope.setter
-    def offsets_gyroscope(self, offsets):
-        data = bytearray(6)
-        struct.pack_into("<hhh", data, 0, *offsets)
-        self._write_register(_OFFSET_GYRO_REGISTER, bytes(data))
+#     @offsets_gyroscope.setter
+#     def offsets_gyroscope(self, offsets):
+#         data = bytearray(6)
+#         struct.pack_into("<hhh", data, 0, *offsets)
+#         self._write_register(_OFFSET_GYRO_REGISTER, bytes(data))
 
-    @property
-    def radius_accelerometer(self):
-        """Radius for accelerometer (cm?)"""
-        return struct.unpack("<h", self._read_register(_RADIUS_ACCEL_REGISTER, 2))[0]
+#     @property
+#     def radius_accelerometer(self):
+#         """Radius for accelerometer (cm?)"""
+#         return struct.unpack("<h", self._read_register(_RADIUS_ACCEL_REGISTER, 2))[0]
 
-    @radius_accelerometer.setter
-    def radius_accelerometer(self, radius):
-        data = bytearray(2)
-        struct.pack_into("<h", data, 0, radius)
-        self._write_register(_RADIUS_ACCEL_REGISTER, bytes(data))
+#     @radius_accelerometer.setter
+#     def radius_accelerometer(self, radius):
+#         data = bytearray(2)
+#         struct.pack_into("<h", data, 0, radius)
+#         self._write_register(_RADIUS_ACCEL_REGISTER, bytes(data))
 
-    @property
-    def radius_magnetometer(self):
-        """Radius for magnetometer (cm?)"""
-        return struct.unpack("<h", self._read_register(_RADIUS_MAGNET_REGISTER, 2))[0]
+#     @property
+#     def radius_magnetometer(self):
+#         """Radius for magnetometer (cm?)"""
+#         return struct.unpack("<h", self._read_register(_RADIUS_MAGNET_REGISTER, 2))[0]
 
-    @radius_magnetometer.setter
-    def radius_magnetometer(self, radius):
-        data = bytearray(2)
-        struct.pack_into("<h", data, 0, radius)
-        self._write_register(_RADIUS_MAGNET_REGISTER, bytes(data))
+#     @radius_magnetometer.setter
+#     def radius_magnetometer(self, radius):
+#         data = bytearray(2)
+#         struct.pack_into("<h", data, 0, radius)
+#         self._write_register(_RADIUS_MAGNET_REGISTER, bytes(data))
